@@ -7,7 +7,13 @@ require('dotenv').config(); // loads .env file
 const app = express();
 
 // 2. Middleware — runs on every request
-app.use(cors());              // allows React (port 3000) to talk to Express (port 5000)
+app.use(cors({
+  origin: [
+    'http://localhost:3000',
+    'https://mern-task-frontend-hck6.onrender.com' // your actual frontend URL
+  ],
+  credentials: true
+}));            
 app.use(express.json());      // lets us read JSON from request body
 
 // 3. Routes — different URL paths
